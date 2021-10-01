@@ -2,13 +2,15 @@
   <v-app>
       <v-app-bar
       color="deep-purple accent-4"
-      dense
+      app
       dark
     >
-      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
 
       <v-toolbar-title>
-      <v-img src="http://www.educacao.al.gov.br/images/logo-01.png"/>
+        <v-avatar size="24">
+            <v-img src="http://www.educacao.al.gov.br/images/logo-01.png" size="25"/>
+        </v-avatar>
        Doe um livro</v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -46,42 +48,46 @@
         </v-list>
       </v-menu>
     </v-app-bar>
-    <v-bottom-navigation
-    :value="value"
-    color="primary"
-  >
-    <v-btn>
-      <span>Recents</span>
 
-      <v-icon>mdi-history</v-icon>
-    </v-btn>
+    <v-navigation-drawer v-model="drawer" absolute temporary>
+        <v-list nav dense>
+        <v-list-item-group v-model="group">
+            
+            <router-link to="/">
+                <v-list-item>
+                    <v-list-item-icon>
+                        <v-icon>mdi-home</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>
+                        Início
+                    </v-list-item-title>
+                </v-list-item>
+            </router-link>
 
-    <v-btn>
-      <span>Favorites</span>
-
-      <v-icon>mdi-heart</v-icon>
-    </v-btn>
-
-    <v-btn>
-      <span>Nearby</span>
-
-      <v-icon>mdi-map-marker</v-icon>
-    </v-btn>
-  </v-bottom-navigation>
-
-    <v-main>
-      <router-view/>
-    </v-main>
+            <router-link to="/about">
+                <v-list-item>
+                    <v-list-item-icon>
+                        <v-icon>mdi-information</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>
+                        Segunda aba
+                    </v-list-item-title>
+                </v-list-item>
+            </router-link>
+            </v-list-item-group>
+        </v-list>
+    </v-navigation-drawer>
   </v-app>
 </template>
 
 <script>
-
 export default {
   name: 'AppTopBar',
-
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      drawer: false,
+      group: null,
+    }
+  }
 };
 </script>

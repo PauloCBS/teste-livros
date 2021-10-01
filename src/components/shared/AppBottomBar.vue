@@ -22,9 +22,6 @@
       <v-icon>mdi-map-marker</v-icon>
     </v-btn>
   </v-bottom-navigation>
-  <v-main>
-      <router-view/>
-    </v-main>
   </v-app>
 </template>
 
@@ -32,9 +29,7 @@
 
 export default {
   name: 'AppBottomBar',
-
-  data: () => ({
-    value: 1
-  }),
-};
+  
+    data: () => ({ value: 1 }),
+  }
 </script>
